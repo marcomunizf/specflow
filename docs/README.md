@@ -1,9 +1,9 @@
 # Overview 
-Este arquivo apresenta todas as informações necessárias para o desenvolvimento do sistema.
+Este arquivo lista todas as informações necessárias para o desenvolvimento do sistema.
 Nele apresentaremos toda a sequencia dos arquivos para o desenvolvimento da plataforma.
 
 ## 01 Business model 
-Definir o modelo de negócio, segmentos de usuários, propostas de valor e todo o canvas estratégico do sistema.
+Definir o modelo de negócio, segmentos de usuários, propostas de valor e todo o Canvas estratégico do sistema.
 
 O que deve conter:
 - Customer Segments: grupos de usuários
