@@ -2,6 +2,15 @@
 Este arquivo lista todas as informações necessárias para o desenvolvimento do sistema.
 Nele apresentaremos toda a sequencia dos arquivos para o desenvolvimento da plataforma.
 
+- 01 Business Model
+- 02 Spec First
+- 03 Architecture
+- 04 Tech Stack
+- 05 API Routes
+- 06 DataBase Schema
+- 07 Backend Structure
+---
+
 ## 01 Business model 
 Definir o modelo de negócio, segmentos de usuários, propostas de valor e todo o Canvas estratégico do sistema.
 
