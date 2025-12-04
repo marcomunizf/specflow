@@ -1,4 +1,41 @@
-# Definições das linguagens e formas de como fazer em cada parte da arquitetura do projeto
+# Arquitetura Geral do Projeto
+
+```text
+┌───────────────────────────────────────────────────────────────┐
+│                          FRONT-END                            │
+│  ▸ React (SPA)                                                │
+│  ▸ Linguagem: JavaScript  (ou TypeScript, se adotado)         │
+│  ▸ HTTP client: Axios (ou Fetch API)                          │
+│  ▸ Formato de dados: JSON                                     │
+│  ▸ Estilos: CSS / CSS Modules / Tailwind                      │
+└───────────────▲───────────────────────────────────────────────┘
+                │
+                │  Requisições HTTP (JSON)                      
+                │  Ex.: GET /api/items, POST /api/auth/login    
+                ▼
+┌───────────────────────────────────────────────────────────────┐
+│                           BACK-END                            │
+│                    Node.js + Express                          │
+│                                                               │
+│  Linguagem: JavaScript ou TypeScript                          │
+│                                                               │
+│  Camadas internas:                                            │
+│  ▸ /src/middlewares                                           │                       
+│  ▸ /src/routes                                                │
+│  ▸ /src/controllers                                           │
+│  ▸ /src/services                                              │
+│  ▸ /src/repositories                                          │
+│  ▸ /src/config                                                │
+└─────────────────┬─────────────────────────────────────────────┘
+                  │
+                  │  Consultas SQL / ORM                        
+                  │  Ex.: SELECT, INSERT, UPDATE, DELETE        
+                  ▼
+┌───────────────────────────────────────────────────────────────┐
+│                           DATABASE                            │
+│                         PostgreSQL                            │
+└───────────────────────────────────────────────────────────────┘
+```
 
 ---
 
