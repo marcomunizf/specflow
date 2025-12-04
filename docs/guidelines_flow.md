@@ -52,7 +52,7 @@
 ## Back-end
 
 - **Linguagem:**
-  - Usar **JavaScript** ou **TypeScript** no backend conforme definido
+  - Usar **JavaScript** ou **TypeScript** no backend conforme definido no front-end
   - Caso **TypeScript** seja adotado, seguir convenções de:
     - `ts-node` ou build com `tsc`
     - tipagem em services/repositories
