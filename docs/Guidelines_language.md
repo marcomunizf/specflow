@@ -1,5 +1,39 @@
-# Arquitetura Geral do Projeto
+# Arquitetura do Sistema
+Este documento descreve a arquitetura técnica do projeto, detalhando como cada parte do sistema é organizada, quais tecnologias são utilizadas em cada camada e como os componentes se comunicam entre si.
 
+A arquitetura define a estrutura fundamental do software, servindo como:
+- guia para implementação do front-end, back-end e banco de dados,
+- referência para agentes de IA,
+- base para desenvolvimento consistente e padronizado,
+- contrato de comunicação entre camadas,
+- documento de alinhamento entre especificação (SPEC), API Routes e Database Schema.
+
+Este arquivo NÃO descreve regras de negócio, mas sim **como** o sistema será construído tecnicamente para atender a essas regras.
+
+Ele contém:
+
+1. **Diagrama da Arquitetura Geral**  
+   Representação visual das camadas (Front-end, Back-end e Database) e como elas interagem usando HTTP, JSON e SQL.
+
+2. **Definições Tecnológicas por Camada**  
+   - Front-end (React, JS/TS, Axios/Fetch, CSS)  
+   - Back-end (Node.js, Express, camadas internas, middlewares, JSON API)  
+   - Database (PostgreSQL, schema, tabelas, constraints, migrações)
+
+3. **Padrões de Implementação**  
+   Convenções de código, organização de diretórios, formato de mensagens, padrões REST e requisitos técnicos transversais.
+
+Este arquivo deve ser consultado sempre que:
+- for criada uma nova feature,  
+- houver dúvidas sobre como estruturar código,  
+- forem introduzidas tecnologias no projeto,  
+- os agentes de IA precisarem entender como gerar ou alterar código,  
+- houver necessidade de alinhar front, back e banco em uma única visão.
+
+A arquitetura aqui descrita deve ser seguida em TODO o ciclo de desenvolvimento.
+
+---
+## Diagrama da Arquitetura Geral
 ```text
 ┌───────────────────────────────────────────────────────────────┐
 │                          FRONT-END                            │
