@@ -23,13 +23,15 @@
 
 - **Formato de dados:**  
   - Enviar e receber dados exclusivamente em **JSON**, seguindo os contratos definidos nas rotas da API
-  - Definir **types/interfaces TypeScript** para:
+  - Se o projeto utilizar apenas **JavaScript**, avaliar uso de **JSDoc** para documentar tipos críticos (ex.: payloads de API)
+  - Se TypeScript for adotado, definir **types/interfaces TypeScript** para:
     - requests
     - responses
 
 
 - **Autenticação no front:**  
-  - Armazenar o token JWT retornado pelo endpoint de login (em `localStorage` ou `sessionStorage`, ou em memória dependendo da estratégia de segurança).  
+  - Armazenar o token JWT retornado pelo endpoint de login (em `localStorage` ou `sessionStorage`, ou em memória dependendo da estratégia de segurança).
+  - Avaliar, em versões futuras, uso de **cookies HTTP-only** para maior segurança do token, dependendo do nível de risco e requisitos de segurança do projeto.
   - Em cada chamada autenticada, enviar o header:
     - `Authorization: Bearer <token>`.
 
@@ -49,8 +51,16 @@
 
 ## Back-end
 
+- **Linguagem:**
+  - Usar **JavaScript** ou **TypeScript** no backend conforme definido
+  - Caso **TypeScript** seja adotado, seguir convenções de:
+    - `ts-node` ou build com `tsc`
+    - tipagem em services/repositories
+    - configuração de `tsconfig.json`
+
+
 - **Plataforma e framework:**
-  - Utilizar **Node.js** com **Express** como base do servidor HTTP. :contentReference[oaicite:4]{index=4}
+  - Utilizar **Node.js** com **Express** como base do servidor HTTP.
 
 
 - **Arquitetura interna (camadas):**   
@@ -63,6 +73,11 @@
     - `/src/utils` – helpers, formatação, geração de token, etc.
     - `/src/config` – configurações (banco, env, logs).
     - Arquivos raiz `app.ts` (configura o Express) e `server.ts` (sobe o servidor).
+
+
+- **Avaliar uso de:**
+  - **Rate limiting** (ex.: `express-rate-limit`) para proteger contra abuso.
+  - **Helmet** para aplicar headers de segurança padrão em todas as respostas HTTP.
 
 
 - **Padrão de API / JSON:**  
@@ -83,7 +98,7 @@
   - `/api/items` – CRUD da entidade principal (acesso a usuários autenticados).
 
 
-- **Middlewares (Express):** :contentReference[oaicite:8]{index=8}  
+- **Middlewares (Express):**  
   - **Autenticação:** validar token JWT e anexar `req.user`.
   - **Autorização:** checar perfil/permissões (ex.: ADMIN).
   - **Tratamento global de erros:** capturar erros e converter em respostas JSON conforme tabela de status codes.
@@ -129,15 +144,29 @@
     - `created_at`, `updated_at`.
 
 
+- **Padrão de timestamps:**
+  - `created_at` com `DEFAULT NOW()`.
+  - `updated_at` atualizado via:
+    - trigger no banco, ou
+    - lógica na aplicação (services/repositories).
+
+
 - **Chaves e relacionamentos:**
   - Definir **Primary Keys (PK)** em todas as tabelas.
   - Definir **Foreign Keys (FK)** quando houver relacionamento entre entidades (ex.: se futuramente `items` pertencerem a um usuário, `id_usuario` referenciando `usuarios(id)`).
-  - Usar **constraints** para garantir integridade (ex.: `CHECK` para status válidos, `UNIQUE` para `usuario`). :contentReference[oaicite:16]{index=16}
+  - Usar **constraints** para garantir integridade (ex.: `CHECK` para status válidos, `UNIQUE` para `usuario`).
 
 
 - **Índices e performance:**
   - Criar índices para campos com busca frequente (ex.: `usuario`, `status`).
   - Considerar views (`VIEW`) para consultas agregadas ou relatórios.
+
+
+- **Estratégia de exclusão:**
+  - Definir se as deleções serão:
+    - **lógicas** (ex.: `status = 'inativo'`), ou
+    - **físicas** (`DELETE`).
+  - Garantir que a SPEC e a API deixem isso explícito para evitar comportamento ambíguo.
 
 
 - **Migrações:**
