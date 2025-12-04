@@ -109,7 +109,7 @@
     - `/src/middlewares` – autenticação, autorização, logs, validação, tratamento de erros.
     - `/src/utils` – helpers, formatação, geração de token, etc.
     - `/src/config` – configurações (banco, env, logs).
-    - Arquivos raiz `app.ts` (configura o Express) e `server.ts` (sobe o servidor).
+    - Arquivos raiz `app.(js|ts)` (configura o Express) e `server.(js|ts)` (sobe o servidor).
 
 
 - **Avaliar uso de:**
