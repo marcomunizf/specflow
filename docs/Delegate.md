@@ -67,12 +67,12 @@ As etapas abaixo são sugeridas para qualquer sistema que possua backend, banco 
 
 ```text
 ┌───────────────────────────────────────────────────────────────┐
-│       Leitura e consolidação do planejamento                  │
+│          Leitura e consolidação do planejamento               │
 └─────────────────────────────┬─────────────────────────────────┘
                               │
                               ▼
 ┌───────────────────────────────────────────────────────────────┐
-│           Setup do Back-end (estrutura base)                  │
+│             Setup do Back-end (estrutura base)                │
 └────────────────────────────┬──────────────────────────────────┘
                              │
                              ▼
