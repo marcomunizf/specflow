@@ -51,7 +51,7 @@ A arquitetura aqui descrita deve ser seguida em TODO o ciclo de desenvolvimento.
 │                           BACK-END                            │
 │                    Node.js + Express                          │
 │                                                               │
-│  Linguagem: JavaScript ou TypeScript                          │
+│  Linguagem: JavaScript (ou TypeScript, se adotado)            │
 │                                                               │
 │  Camadas internas:                                            │
 │  ▸ /src/middlewares                                           │                       
