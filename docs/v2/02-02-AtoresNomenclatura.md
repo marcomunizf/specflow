@@ -23,7 +23,11 @@
 - Terá permissões restritas e controladas via token de integração.
 
 ---
+## 🔗 Relacionamento 
+- Descrever como os atores se relacionam entre si.
+- Regras de relação entre as tabelas de banco de dados. 
 
+---
 ## 📘 Glossário
 - Definir nessa etapa toda a nomenclatura do sistema
 
