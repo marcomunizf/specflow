@@ -10,11 +10,10 @@ Todo o conteúdo detalhado da SPEC está dividido em subarquivos para facilitar 
 ## 📌 Estrutura da SPEC
 
 1. [Visão Geral](./02-01-SpecGeral.md)  
-2. [Atores e Glossário](./02-02-atores-e-glossario.md)  
-3. [Modelo de Domínio](./02-03-modelo-de-dominio.md)  
-4. [Requisitos Funcionais (RF)](./02-04-requisitos-funcionais.md)  
-5. [Requisitos Não Funcionais (RNF)](./02-05-requisitos-nao-funcionais.md)  
-6. [Casos de Teste de Aceitação](./02-06-casos-de-teste-aceitacao.md)
+2. [Atores e Glossário](./02-02-AtoresGlossario.md)  
+3. [Requisitos Funcionais (RF)](./02-03-RF.md)  
+4. [Requisitos Não Funcionais (RNF)](./02-04-RNF.md)  
+5. [Casos de Teste de Aceitação](./02-05-testesaceitacao.md)  
 
 ---
 
