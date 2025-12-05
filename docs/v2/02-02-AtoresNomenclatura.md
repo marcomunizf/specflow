@@ -26,7 +26,8 @@
 
 ## 📘 Glossário
 - Definir nessa etapa toda a nomenclatura do sistema
-- 
+
+
 **Autenticação:**  
 Processo de validar usuário via credenciais.
 
