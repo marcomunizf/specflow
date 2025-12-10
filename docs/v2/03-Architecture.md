@@ -1,105 +1,104 @@
-# Arquitetura — Guia do Projeto
+# 03 — Arquitetura do Sistema
 
-## 📌 O que este arquivo deve conter
-Descrever **como o projeto é organizado**, suas camadas, limites, módulos e papéis.
+Este documento descreve a **arquitetura do sistema**, apresentando a organização das
+camadas, responsabilidades de cada parte, fluxos de comunicação e visão geral da
+infraestrutura.
 
-## 🔍 Pontos de atenção
-- Não descreve detalhes do código.  
-- Foca em organização, fluxo, responsabilidade e comunicação.  
-- Deve apoiar decisões de implementação.
+A arquitetura define **como o sistema é estruturado**, **como os componentes se
+relacionam** e **onde cada tipo de responsabilidade deve estar**, servindo como base
+para a implementação do código e para os agentes de IA envolvidos no desenvolvimento
+(Spec-Driven Development e Compounding Engineering).
 
----
-
-# 1. Visão Geral da Arquitetura
-
-Exemplo:
-"A arquitetura será baseada em camadas independentes para apresentação, domínio e persistência."
+Este arquivo **não define tecnologias específicas, bibliotecas ou versões**.
+Essas decisões estão documentadas no arquivo `techstack.txt`.
 
 ---
 
-# 2. Objetivos Arquiteturais
+## Objetivos da Arquitetura
 
-Exemplo:
-- Baixo acoplamento.  
-- Facilidade de manutenção.  
-- Padrões de segurança fortalecidos.  
-- Estrutura escalável.
-
----
-
-# 3. Contexto do Sistema
-
-Descrever atores externos, integrações e fronteiras.
-
-Exemplo:
-- Aplicações externas acessam API pública.  
-- Usuários interagem via interface web.  
-- Serviços internos fazem processamento assíncrono.
+- Garantir separação clara de responsabilidades.
+- Facilitar manutenção, testes e evolução do sistema.
+- Evitar acoplamento excessivo entre camadas.
+- Fornecer um modelo claro para implementação guiada por SPEC.
+- Servir como referência para os agentes de **Delegate** e **Assess**.
 
 ---
 
-# 4. Tipos de Usuário e Permissões
+## Visão Geral da Arquitetura
 
-Exemplo:
-- Usuário básico: leitura.  
-- Moderador: ações administrativas.  
-- Serviço externo: acesso limitado via token.
+O sistema é dividido em quatro grandes blocos:
 
----
+- **Front-end**
+- **Back-end**
+- **Database**
+- **Infraestrutura**
 
-# 5. Arquitetura Lógica
+A comunicação segue o fluxo geral:
 
-### O que incluir
-- Frontend  
-- Backend  
-- Serviços externos  
-- Banco  
-- Comunicação (REST, fila, eventos)
+Front-end ⇄ Back-end ⇄ Database
 
-Exemplo:
-"O frontend comunica com backend via JSON/HTTPS. O backend persiste dados em banco relacional e publica eventos em fila AMQP."
+- Front-end e Back-end se comunicam via **HTTP**, utilizando **JSON**.
+- Back-end e Database se comunicam via **consultas estruturadas (SQL ou abstrações equivalentes)**.
+- A Infraestrutura é responsável por isolar e organizar os serviços.
 
 ---
 
-# 6. Domínios ou Módulos
+## Arquitetura do Front-end (Conceitual)
 
-Exemplo:
-- Módulo de autenticação  
-- Módulo de entidades principais  
-- Módulo de relatórios  
-- Módulo de integrações
+Responsabilidades do Front-end:
 
----
+- Apresentar a interface ao usuário.
+- Capturar interações do usuário.
+- Consumir a API do Back-end por meio de requisições HTTP.
+- Enviar e receber dados no formato JSON.
+- Gerenciar estado da interface e navegação.
 
-# 7. Modelo de Dados Simplificado
-
-Exemplo:
-Representar em forma de lista ou diagrama textual:
-
-- Entidade A: id, nome, status  
-- Entidade B: id, valor, fk_entidadeA  
+O Front-end **não deve conter regras de negócio críticas** nem realizar acesso direto
+ao banco de dados.
 
 ---
 
-# 8. Fluxos Principais
+## Arquitetura do Back-end
 
-Exemplo (texto):
-"Fluxo de criação de item: usuário → frontend → API → validação → persistência → retorno."
+O Back-end é responsável por:
+
+- Expor uma API HTTP.
+- Implementar regras de negócio.
+- Validar dados de entrada.
+- Controlar autenticação e autorização.
+- Orquestrar o acesso ao banco de dados.
+
+### Organização em Camadas
+
+- `/routes` – definição das rotas HTTP.
+- `/controllers` – recebem requisições e retornam JSON.
+- `/services` – regras de negócio.
+- `/repositories` – acesso ao banco de dados.
+- `/middlewares` – autenticação, autorização, logs e erros.
+- `/utils` – funções auxiliares.
+- `/config` – configurações da aplicação.
+- `app.(js|ts)` e `server.(js|ts)` – inicialização do servidor.
 
 ---
 
-# 9. Segurança e Integridade
+## Fluxo de uma Requisição
 
-Exemplo:
-- Acesso baseado em permissões.  
-- Tokens seguros.  
-- Logging de operações sensíveis.
+Request → Route → Controller → Service → Repository → Database  
+Database → Repository → Service → Controller → Response (JSON)
 
 ---
 
-# 10. Evolução da Arquitetura
+## Infraestrutura (Visão Conceitual)
 
-Exemplo:
-- Migrar para microsserviços no futuro.  
-- Adicionar camada de cache.  
-- Adicionar mensageria para eventos internos.
+A infraestrutura é responsável por:
+
+- Isolar serviços.
+- Facilitar execução local e em produção.
+- Garantir previsibilidade do ambiente.
+
+---
+
+## O que NÃO é responsabilidade deste arquivo
+
+Este documento **não define** bibliotecas, frameworks, versões ou comandos de execução.
+Essas decisões pertencem ao arquivo `techstack.txt`.
