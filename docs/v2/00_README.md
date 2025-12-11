@@ -9,8 +9,15 @@ Nele apresentaremos toda a sequencia dos arquivos para o desenvolvimento da plat
 - 05 API Routes
 - 06 DataBase Schema
 - 07 Backend Structure
+- 08 CodifyProject
 ---
+## Regras básicas
 
+- Se houver conflito entre as regras genéricas dos guidelines com as regras desses documentos específicos, prevalece as regras que estão nos arquivos para desenvolvimento do projeto.
+- 
+
+
+---
 ## 01 Business model 
 Definir o modelo de negócio, segmentos de usuários, propostas de valor e todo o Canvas estratégico do sistema.
 
