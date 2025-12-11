@@ -271,7 +271,7 @@ export const db = new Pool({
 ```
 ---
 
-## 9. Docker e docker-compose
+# 9. Docker e docker-compose
 
 O backend deve ser executável via **Docker** e **Docker Compose**, garantindo que qualquer desenvolvedor ou agente de IA consiga subir o ambiente completo com um único comando.
 
