@@ -345,6 +345,9 @@ Garantir que todas as partes do sistema funcionem juntas de forma coerente.
 
 ## 4. Regras finais para o agente no Delegate
 
+- Ler e respeitar:
+   -  `CodifyGeneral` (regras globais)  
+    - `08-CodifyProject.md` (regras específicas deste projeto).”
 - **Nunca** ignorar ou contradizer o que está nos documentos de planejamento.
 - **Sempre** justificar decisões que não estiverem explicitamente cobertas pela especificação.
 - **Sempre** trabalhar em etapas pequenas, concluindo e revisando antes de seguir.
