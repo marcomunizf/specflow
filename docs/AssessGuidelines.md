@@ -13,6 +13,10 @@ usando três níveis complementares de análise:
 O ASSESS deve ser executado **após cada etapa importante do DELEGATE**, e não apenas
 no final do projeto.
 
+- Verificar se algum problema identificado é recorrente e merece virar regra em:
+   > - `CodifyGeneral` (se genérico)
+   > - `08-CodifyProject.md` (se específico).
+
 ---
 
 ## 1. Princípios gerais do ASSESS
