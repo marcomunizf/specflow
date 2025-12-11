@@ -10,7 +10,7 @@ para a implementação do código e para os agentes de IA envolvidos no desenvol
 (Spec-Driven Development e Compounding Engineering).
 
 Este arquivo **não define tecnologias específicas, bibliotecas ou versões**.
-Essas decisões estão documentadas no arquivo `techstack.txt`.
+Essas decisões estão documentadas no arquivo `04- TechStack.md`.
 
 ---
 
