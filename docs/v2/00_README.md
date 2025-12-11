@@ -157,3 +157,7 @@ Conteúdo esperado:
 - Boas práticas e padrões internos
 
 É o guia para qualquer agente ou desenvolvedor entender como implementar o backend corretamente.
+
+---
+## 08 Codify Project
+Melhorias/Atualizações para as regras específicas do projeto.
