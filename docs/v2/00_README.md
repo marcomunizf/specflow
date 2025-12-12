@@ -13,8 +13,8 @@ Nele apresentaremos toda a sequencia dos arquivos para o desenvolvimento da plat
 ---
 ## Regras básicas
 
+- Se algum arquivo estiver faltando, deve analisar para ver se é necessário ou não. Por exemplo, se o sistema não tiver banco de dados, não é necessário ter o arquivo DataBase Schema.
 - Se houver conflito entre as regras genéricas dos guidelines com as regras desses documentos específicos, prevalece as regras que estão nos arquivos para desenvolvimento do projeto.
-- 
 
 
 ---
