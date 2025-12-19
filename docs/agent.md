@@ -1,0 +1,184 @@
+# AGENT_WORKFLOW
+
+## PROPÓSITO
+Definir o fluxo operacional que o agente DEVE seguir para planejar, executar, avaliar e codificar um projeto de software de forma iterativa.
+
+---
+
+## REGRAS GLOBAIS
+
+- O agente DEVE seguir rigorosamente a ordem das etapas definidas neste documento.
+- O agente NÃO DEVE pular nenhuma etapa.
+- O agente DEVE iterar pelas etapas de execução até que todas estejam concluídas.
+- O agente DEVE sempre respeitar os arquivos em `/guidelines/` como fonte máxima de autoridade.
+- O agente DEVE tratar todos os arquivos `.md` como fontes autoritativas.
+
+---
+
+## ETAPA 0 — READ_CONTEXT
+
+### ENTRADA
+- Raiz do repositório
+
+### AÇÕES
+- Ler TODOS os arquivos listados abaixo:
+  - `/guidelines/**`
+  - `/plan/**`
+  - `/planproject/**`
+
+### SAÍDA
+- Representação interna contendo:
+  - Regras do projeto
+  - Planejamento existente
+  - Restrições de execução
+
+---
+
+## ETAPA 1 — CHECK_PROJECT_DESCRIPTION
+
+### AÇÃO
+- Verificar se existe um **arquivo de descrição do projeto** com nome `description` dentro de `/planproject/**`.
+
+### DECISÃO
+- SE a descrição do projeto EXISTE → ir para `ETAPA 2A — PLAN_GENERATION`
+- SE a descrição do projeto NÃO EXISTE → ir para `ETAPA 2B — PLAN_READING`
+
+---
+
+## ETAPA 2A — PLAN_GENERATION
+
+### CONDIÇÃO
+- Executar SOMENTE se existir descrição do projeto. Arquivo `description` dentro de `/planproject/**`
+
+### AÇÕES
+- Ler o arquivo de descrição do projeto.
+- Gerar TODOS os arquivos necessários dentro de `/planproject/`.
+- Os arquivos gerados DEVEM:
+  - Ser arquivos em formato **.md**
+  - Seguir os templates definidos em `/plan/`
+  - Utilizar o mesmo nome dos arquivos definidos em `/plan/`
+  - Seguir todas as regras de `/guidelines/`
+  - Ser internamente consistentes
+
+### SAÍDA
+- Diretório `/planproject/` totalmente preenchido
+
+---
+
+## ETAPA 2B — PLAN_READING
+
+### CONDIÇÃO
+- Executar SOMENTE se NÃO existir descrição do projeto.
+
+### AÇÕES
+- Ler TODOS os arquivos existentes em `/planproject/`.
+- NÃO modificar arquivos nesta etapa.
+- Avaliar se há arquivos faltando na pasta `/planproject/` quando comparados com os templates em `/planproject/`
+- Apenas criar arquivos se estiver faltando arquivo e esse arquivo é necessário para o desenvolvimento do projeto.
+
+### SAÍDA
+- Compreensão interna completa do planejamento existente
+
+---
+
+## ETAPA 3 — DELEGATE
+
+### ENTRADA
+- Todos os arquivos da pasta `/planproject/`
+
+### AÇÕES
+- Criar um plano estruturado de execução.
+- Definir explicitamente:
+  - Etapas de execução (Etapa X, X+1, ...)
+  - Ordem de implementação
+  - Tecnologias por camada
+  - Dependências entre etapas
+
+### SAÍDA
+- Roadmap interno de execução
+- Definição clara da `ETAPA X`
+
+---
+
+## ETAPA 4 — EXECUTE_STAGE_X
+
+### ENTRADA
+- Definição da Etapa X vinda do `DELEGATE`
+
+### AÇÕES
+- Implementar TODOS os itens definidos para a Etapa X.
+- Seguir rigorosamente:
+  - `/guidelines/`
+  - `/plan/`
+  - `/planproject/`
+  - `/delegate/`
+  - Arquitetura definida
+
+### SAÍDA
+- Alterações de código correspondentes EXCLUSIVAMENTE à Etapa X
+
+---
+
+## ETAPA 5 — ASSESS_STAGE_X
+
+### ENTRADA
+- Código produzido na Etapa X
+
+### AÇÕES
+- Aplicar TODAS as camadas de avaliação definidas em `/guidelines/assessguidelines`.
+- Avaliar obrigatoriamente:
+  - Qualidade do código
+  - Riscos de segurança
+  - Consistência arquitetural
+  - Estilo e manutenibilidade
+
+### DECISÃO
+- SE a avaliação FALHAR → retornar para `ETAPA 4 — EXECUTE_STAGE_X`
+- SE a avaliação PASSAR → seguir para `ETAPA 6 — CODIFY`
+
+---
+
+## ETAPA 6 — CODIFY
+
+### ENTRADA
+- Código aprovado da Etapa X
+
+### AÇÕES
+- Verificar:
+  - Quais arquivos foram criados
+  - Quais arquivos foram modificados
+- Garantir que as alterações:
+  - São coerentes com o código existente
+  - Não quebram etapas futuras planejadas
+- Verificar:
+  - Necessidade de modificar os arquivos de codify.
+  - Modificar o arquivo `/guidelines/codifygeneral` se a alteração for válida para qualquer tipo de projeto.
+  - Modificar o arquivo `/planproject/08-codifyproject` se a alteração for válida apenas para o projeto que está sendo executado.
+
+### SAÍDA
+- Código consolidado e pronto para a próxima iteração
+
+---
+
+## ETAPA 7 — LOOP_CONTROL
+
+### AÇÃO
+- Verificar se ainda existem etapas pendentes.
+
+### DECISÃO
+- SE existirem etapas pendentes → incrementar X e retornar para `ETAPA 4 — EXECUTE_STAGE_X`
+- SE NÃO existirem mais etapas → FINALIZAR
+
+---
+
+## RESUMO DO CICLO (AUTORITATIVO)
+
+```text
+READ_CONTEXT
+  → CHECK_PROJECT_DESCRIPTION
+    → PLAN_GENERATION | PLAN_READING
+      → DELEGATE
+        → EXECUTE_STAGE_X
+          → ASSESS_STAGE_X
+            → CODIFY
+              → LOOP_CONTROL → EXECUTE_STAGE_X+1
