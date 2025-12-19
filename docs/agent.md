@@ -14,6 +14,18 @@ Definir o fluxo operacional que o agente DEVE seguir para planejar, executar, av
 - O agente DEVE tratar todos os arquivos `.md` como fontes autoritativas.
 
 ---
+## DEFINIÇÕES DE DIRETÓRIOS (OBRIGATÓRIO)
+
+- `/docs/plan/`:
+  - CONTÉM TEMPLATES (modelo fixo).
+  - É READ-ONLY para conteúdo do projeto.
+
+- `/docs/planproject/`:
+  - CONTÉM O PLANO DO PROJETO ATUAL (instância preenchida ou a ser preenchida).
+  - É o local onde o agente DEVE escrever os arquivos de planejamento do projeto .
+  - Todos os arquivos gerados aqui DEVEM seguir a estrutura e a ordem do `/plan/`.
+
+---
 
 ## ETAPA 0 — READ_CONTEXT
 
@@ -45,14 +57,18 @@ Definir o fluxo operacional que o agente DEVE seguir para planejar, executar, av
 
 ---
 
-## ETAPA 2A — PLAN_GENERATION
+## ETAPA 2A — PLANPROJECT_GENERATION
 
 ### CONDIÇÃO
 - Executar SOMENTE se existir descrição do projeto. Arquivo `description` dentro de `/planproject/**`
 
 ### AÇÕES
+- Ler os arquivos `/plan/` (templates).
 - Ler o arquivo de descrição do projeto.
-- Gerar TODOS os arquivos necessários dentro de `/planproject/`.
+- Para cada template em `/plan/`, gerar o arquivo equivalente dentro de `/planproject/`.
+  - Mesmo nome
+  - Mesma ordem e seções
+  - preencher usando apenas o arquivo de description, usando regras em `/guidelines/`
 - Os arquivos gerados DEVEM:
   - Ser arquivos em formato **.md**
   - Seguir os templates definidos em `/plan/`
@@ -61,18 +77,18 @@ Definir o fluxo operacional que o agente DEVE seguir para planejar, executar, av
   - Ser internamente consistentes
 
 ### SAÍDA
-- Diretório `/planproject/` totalmente preenchido
+- Diretório `/planproject/` totalmente preenchido com o plano do projeto atual.
 
 ---
 
-## ETAPA 2B — PLAN_READING
+## ETAPA 2B — PLANPROJECT_READING
 
 ### CONDIÇÃO
-- Executar SOMENTE se NÃO existir descrição do projeto.
+- Executar SOMENTE se NÃO existir descrição do projeto em `/planproject/`.
 
 ### AÇÕES
 - Ler TODOS os arquivos existentes em `/planproject/`.
-- NÃO modificar arquivos nesta etapa.
+- NÃO modificar arquivos em `/planproject/`.
 - Avaliar se há arquivos faltando na pasta `/planproject/` quando comparados com os templates em `/planproject/`
 - Apenas criar arquivos se estiver faltando arquivo e esse arquivo é necessário para o desenvolvimento do projeto.
 
@@ -84,7 +100,8 @@ Definir o fluxo operacional que o agente DEVE seguir para planejar, executar, av
 ## ETAPA 3 — DELEGATE
 
 ### ENTRADA
-- Todos os arquivos da pasta `/planproject/`
+- Todos os arquivos da pasta `/planproject/` são usados como fonte do projeto.
+- `/plan/` é referencia estrututal (template), não é conteúdo do projeto.
 
 ### AÇÕES
 - Criar um plano estruturado de execução.
