@@ -86,11 +86,48 @@ Definir o fluxo operacional que o agente DEVE seguir para planejar, executar, av
 ### CONDIÇÃO
 - Executar SOMENTE se NÃO existir descrição do projeto em `/planproject/`.
 
+### DEFINIÇÕES IMPORTANTES
+- Os templates em `/docs/plan/` PODEM ser:
+  - CORE (obrigatórios para qualquer projeto)
+  - OPTIONAL (dependem do escopo do projeto)
+    
+CORE
+- 01-BusinessModel.md
+- 02-00-SpecFirst.md
+- 02-01-SpecGeral.md
+- 02-02-AtoresGlossario.md
+- 03-Architecture.md
+- 04-TechStack.md
+
+OPTIONAL
+- 02-03-RF.md
+- 02-04-RNF.md
+- 02-05-testesaceitacao.md
+- 05-APIRoutes.md
+- 06-DatabaseSchema.md
+- 07-BackendStructure.md
+- 08-CodifyProject.md
+
 ### AÇÕES
-- Ler TODOS os arquivos existentes em `/planproject/`.
-- NÃO modificar arquivos em `/planproject/`.
-- Avaliar se há arquivos faltando na pasta `/planproject/` quando comparados com os templates em `/planproject/`
-- Apenas criar arquivos se estiver faltando arquivo e esse arquivo é necessário para o desenvolvimento do projeto.
+- Ler TODOS os arquivos existentes em `/docs/planproject/`.
+- Ler TODOS os templates em `/docs/plan/` e identificar:
+  - Quais são CORE
+  - Quais são OPTIONAL
+
+### DECISÃO (DETERMINÍSTICA)
+
+- Para templates marcados como CORE:
+  - SE o arquivo NÃO existir em `/docs/planproject/`:
+    - O agente DEVE criar um arquivo contendo:
+      - Preenchimento de acordo com description.md e o template em `/docs/plan/`."
+
+- Para templates marcados como OPTIONAL:
+  - O agente NÃO DEVE criar arquivos em `/docs/planproject/` sem confirmação explícita no `description.md`.
+
+- O agente NÃO DEVE:
+  - Preencher conteúdo de projeto
+  - Inferir necessidades técnicas
+  - Criar arquivos OPTIONAL por suposição
 
 ### SAÍDA
 - Compreensão interna completa do planejamento existente
