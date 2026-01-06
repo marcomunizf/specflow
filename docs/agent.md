@@ -89,15 +89,15 @@ Templates OPTIONAL SÓ podem ser criados quando explicitamente ativados no `desc
 - Verificar se existe um arquivo de descrição do projeto com nome EXATO `description.md` dentro de `/docs/planproject/`.
 
 ### DECISÃO
-- SE `description.md` EXISTE → ir para `ETAPA 2A — PLANPROJECT_GENERATION`
-- SE `description.md` NÃO EXISTE → ir para `ETAPA 2B — PLANPROJECT_READING`
+- SE `description.md` EXISTE e NÃO FOR VAZIO → ir para `ETAPA 2A — PLANPROJECT_GENERATION`
+- SE `description.md` NÃO EXISTE ou for VAZIO → ir para `ETAPA 2B — PLANPROJECT_READING`
 
 ---
 
 ## ETAPA 2A — PLANPROJECT_GENERATION
 
 ### CONDIÇÃO
-- Executar SOMENTE se existir `description.md` em `/docs/planproject/`.
+- Executar SOMENTE se existir e NÃO FOR VAZIO `description.md` em `/docs/planproject/`.
 
 ### OBJETIVO
 Instanciar o planejamento completo do projeto atual usando os templates definidos em `/docs/plan/`.
@@ -127,7 +127,7 @@ Instanciar o planejamento completo do projeto atual usando os templates definido
 ## ETAPA 2B — PLANPROJECT_READING
 
 ### CONDIÇÃO
-- Executar SOMENTE se NÃO existir `description.md` em `/docs/planproject/`.
+- Executar SOMENTE se NÃO existir ou for VAZIO `description.md` em `/docs/planproject/`.
 
 ### OBJETIVO
 Evitar alucinação e evitar criação de artefatos sem definição explícita de escopo.
